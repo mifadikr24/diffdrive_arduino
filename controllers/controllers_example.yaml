@@ -1,6 +1,7 @@
 controller_manager:
   ros__parameters:
     update_rate: 50  # Hz
+    # use_sim_time: true
 
     diff_controller:
       type: diff_drive_controller/DiffDriveController
@@ -11,11 +12,16 @@ controller_manager:
 diff_controller:
   ros__parameters:
     publish_rate: 50.0
-    left_wheel_names: ['left_wheel_joint']
-    right_wheel_names: ['right_wheel_joint']
-    wheels_per_side: 1
-    wheel_separation: 0.3
-    wheel_radius: 0.05
+
+    # 4WD: two joints per side send to the controller.
+    # diff_drive_controller sends the same velocity command
+    # to FL & RL (left side) and FR & RR (right side).
+    left_wheel_names:  ['fl_wheel_joint', 'rl_wheel_joint']
+    right_wheel_names: ['fr_wheel_joint', 'rr_wheel_joint']
+
+    # wheels_per_side: 2 #automatically detected by the lenght of the list
+    wheel_separation: 0.205
+    wheel_radius: 0.0508
     base_frame_id: base_link
     use_stamped_vel: false
 
