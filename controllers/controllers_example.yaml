@@ -22,28 +22,27 @@ diff_controller:
     # wheels_per_side: 2 #automatically detected by the lenght of the list
     wheel_separation: 0.205
     wheel_radius: 0.0508
-    base_frame_id: base_link
-    use_stamped_vel: false
+    base_frame_id: base_footprint
 
-    linear.x.has_velocity_limits: false
-    linear.x.has_acceleration_limits: false
-    linear.x.has_jerk_limits: false
-    linear.x.max_velocity: 0.0
-    linear.x.min_velocity: 0.0
-    linear.x.max_acceleration: 0.0
-    linear.x.min_acceleration: 0.0
-    linear.x.max_jerk: 0.0
-    linear.x.min_jerk: 0.0
+    linear.x.has_velocity_limits: .NAN
+    linear.x.has_acceleration_limits: .NAN
+    linear.x.has_jerk_limits: .NAN
+    linear.x.max_velocity: .NAN
+    linear.x.min_velocity: .NAN
+    linear.x.max_acceleration: .NAN
+    linear.x.min_acceleration: .NAN
+    linear.x.max_jerk: .NAN
+    linear.x.min_jerk: .NAN
 
-    angular.z.has_velocity_limits: false
-    angular.z.has_acceleration_limits: false
-    angular.z.has_jerk_limits: false
-    angular.z.max_velocity: 0.0
-    angular.z.min_velocity: 0.0
-    angular.z.max_acceleration: 0.0
-    angular.z.min_acceleration: 0.0
-    angular.z.max_jerk: 0.0
-    angular.z.min_jerk: 0.0
+    angular.z.has_velocity_limits: .NAN
+    angular.z.has_acceleration_limits: .NAN
+    angular.z.has_jerk_limits: .NAN
+    angular.z.max_velocity: .NAN
+    angular.z.min_velocity: .NAN
+    angular.z.max_acceleration: .NAN
+    angular.z.min_acceleration: .NAN
+    angular.z.max_jerk: .NAN
+    angular.z.min_jerk: .NAN
 
 # joint_state_broadcaster:
 #   ros__parameters:

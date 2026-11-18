@@ -3,6 +3,8 @@
 #include <rclcpp/rclcpp.hpp>
 #include <sstream>
 #include <cstdlib>
+#include <thread>
+#include <chrono>
 
 /* arduino_comms.cpp - there is no logic difference from 2WD version.
    The readEncoderValues() function still recieves the 2 integer values,
@@ -18,6 +20,10 @@ void ArduinoComms::setup(const std::string &serial_device, int32_t baud_rate, in
   serial_conn_.setTimeout(tt); // This should be inline except setTimeout takes a reference and so needs a variable
   serial_conn_.open();
   // serial_conn_.(serial_device, baud_rate, serial::Timeout::simpleTimeout(timeout_ms));
+  
+  // Mega auto-resets when the port opens: wait for boot, then drop any noise
+  std::this_thread::sleep_for(std::chrono::seconds(2));
+  serial_conn_.flushInput();
 }
 
 void ArduinoComms::sendEmptyMsg()

@@ -39,7 +39,12 @@ hardware_interface::CallbackReturn DiffDriveArduino::on_init(const hardware_inte
   rr_wheel_.setup(cfg_.rear_right_wheel_name,  cfg_.enc_counts_per_rev_right());
 
   // Set up the Arduino
-  arduino_.setup(cfg_.device, cfg_.baud_rate, cfg_.timeout);
+  try {
+    arduino_.setup(cfg_.device, cfg_.baud_rate, cfg_.timeout);
+  } catch (const std::exception & e) {
+    RCLCPP_FATAL(logger_, "Cannot open serial %s: %s", cfg_.device.c_str(), e.what());
+    return CallbackReturn::ERROR;
+  }
 
   RCLCPP_INFO(logger_, "Finished Configuration");
   
